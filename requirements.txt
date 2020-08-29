@@ -1,0 +1,5 @@
+streamlit 
+altair
+pandas
+datetime
+numpy==1.16.4
