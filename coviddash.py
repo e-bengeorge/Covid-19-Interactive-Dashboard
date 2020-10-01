@@ -26,7 +26,7 @@ st.sidebar.markdown('🦠 **Covid-19 Dashborad** 🦠 ')
 st.sidebar.markdown(''' 
 This app is to give insights about Covid-19 Infections around the world.
 
-The data considerd for this analysis for 6 Months starting from 01-02-2020 to 31-08-2020
+The data considerd for this analysis for 8 Months starting from 01-02-2020 to 30-09-2020
 
 Select the different options to vary the Visualization
 
@@ -74,7 +74,6 @@ cas= alt.Chart(covid[covid["Country"]==cty],title="Scatter Chart",width=500,heig
     tooltip=["Date","Country","New cases","New deaths","New recovered"]
 ).interactive()
 
-#st.header(f"View Daily Cases for {cty}")
 
 
 
@@ -93,6 +92,7 @@ elif daily =='Daily New Deaths':
         st.altair_chart(de.mark_line(color='purple'))
     else:
         st.altair_chart(de.mark_circle(color='purple'))
+
 "Visualizing Daily New Cases, recoveries and deaths in a Single Chart"
 "In Scatter Chart, Circle represent daily new cases, size of the circle shows the daily deaths and the color variation shows the daily recoveries"
 st.altair_chart(cas)
@@ -151,6 +151,7 @@ h=alt.Chart(covid[covid["Country"]==cty],width=900,height=100).mark_text(angle=2
 )
 
 
+
 op = st.radio("Select the option",('Day and Month', 'Day','Date and Month','Date'))
 
 if op == 'Day and Month':
@@ -193,7 +194,7 @@ else:
 
 
 st.header(f"Summary of Covid-19 infections in {cty}")
-"From 01-02-2020 to 31-08-2020"
+"From 01-02-2020 to 30-09-2020"
 tot = latest[latest["Country"]==cty]['Confirmed'].sum()
 
 #st.subheader(f"Total Confirmed cases in {cty} = {tot}")
@@ -345,7 +346,7 @@ else:
 st.header(f"View Covid-19 details by Date")
 import datetime
 ddd = st.date_input(
-     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 8, 31) )
+     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 9, 30) )
 #st.write('The selected date is:', ddd)
 #covid[covid["Date"]==ddd]
 #st.dataframe(covid.iloc[[covid[covid["Date"] == dd]["New cases"].idxmax()]][["Country","Date","New cases"]].reset_index(drop=True))
@@ -386,7 +387,7 @@ st.header(f"View the Dataset by Month")
 
 if st.checkbox("Click to View the Dataset",False):
     "Select the Month from Slider"
-    nc = st.slider("Month",2,8,2,1)
+    nc = st.slider("Month",2,9,2,1)
     covid = covid[covid["Date"].dt.month ==nc]
     "data", covid
     
