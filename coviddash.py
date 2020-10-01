@@ -15,7 +15,7 @@ st.cache(persist=True)
 def load_data():
     covid=pd.read_csv("data.csv")
     covid["Date"]=pd.to_datetime(covid["Date"],format="%d-%m-%Y")
-    latest=covid[covid["Date"] == "2020-08-31"][["Country","Confirmed","Recovered","Deaths","Active"]]
+    latest=covid[covid["Date"] == "2020-09-30"][["Country","Confirmed","Recovered","Deaths","Active"]]
     return covid,latest
 covid,latest= load_data()
 
