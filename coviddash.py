@@ -346,7 +346,7 @@ else:
 st.header(f"View Covid-19 details by Date")
 import datetime
 ddd = st.date_input(
-     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 11, 30) )
+     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 11, 30))
 #st.write('The selected date is:', ddd)
 #covid[covid["Date"]==ddd]
 #st.dataframe(covid.iloc[[covid[covid["Date"] == dd]["New cases"].idxmax()]][["Country","Date","New cases"]].reset_index(drop=True))
