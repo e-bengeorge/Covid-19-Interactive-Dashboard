@@ -15,7 +15,7 @@ st.cache(persist=True)
 def load_data():
     covid=pd.read_csv("data.csv")
     covid["Date"]=pd.to_datetime(covid["Date"],format="%d-%m-%Y")
-    latest=covid[covid["Date"] == "2020-09-30"][["Country","Confirmed","Recovered","Deaths","Active"]]
+    latest=covid[covid["Date"] == "2020-11-30"][["Country","Confirmed","Recovered","Deaths","Active"]]
     return covid,latest
 covid,latest= load_data()
 
@@ -26,7 +26,7 @@ st.sidebar.markdown('🦠 **Covid-19 Dashborad** 🦠 ')
 st.sidebar.markdown(''' 
 This app is to give insights about Covid-19 Infections around the world.
 
-The data considerd for this analysis for 8 Months starting from 01-02-2020 to 30-09-2020
+The data considerd for this analysis for 10 Months starting from 01-02-2020 to 30-11-2020
 
 Select the different options to vary the Visualization
 
@@ -194,7 +194,7 @@ else:
 
 
 st.header(f"Summary of Covid-19 infections in {cty}")
-"From 01-02-2020 to 30-09-2020"
+"From 01-02-2020 to 30-11-2020"
 tot = latest[latest["Country"]==cty]['Confirmed'].sum()
 
 #st.subheader(f"Total Confirmed cases in {cty} = {tot}")
@@ -346,7 +346,7 @@ else:
 st.header(f"View Covid-19 details by Date")
 import datetime
 ddd = st.date_input(
-     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 9, 30) )
+     "Select the Date",value = datetime.date(2020, 2, 1),min_value = datetime.date(2020, 2, 1), max_value= datetime.date(2020, 11, 30) )
 #st.write('The selected date is:', ddd)
 #covid[covid["Date"]==ddd]
 #st.dataframe(covid.iloc[[covid[covid["Date"] == dd]["New cases"].idxmax()]][["Country","Date","New cases"]].reset_index(drop=True))
@@ -387,7 +387,7 @@ st.header(f"View the Dataset by Month")
 
 if st.checkbox("Click to View the Dataset",False):
     "Select the Month from Slider"
-    nc = st.slider("Month",2,9,2,1)
+    nc = st.slider("Month",2,11,2,1)
     covid = covid[covid["Date"].dt.month ==nc]
     "data", covid
     
